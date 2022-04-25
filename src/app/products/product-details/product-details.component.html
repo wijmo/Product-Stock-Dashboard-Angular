@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Product Details</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-6">
+                <div class="barcode-wrapper">
+                    <wj-barcode-code128 [value]="product.code" [autoWidthZoom]="3"></wj-barcode-code128>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <table style="margin-top: 10px; width: 96%;">
+                    <tr>
+                        <th>Warehouse</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr>
+                        <td>Warehouse 1</td>
+                        <td>{{ product.warehouseOne }}</td>
+                    </tr>
+                    <tr>
+                        <td>Warehouse 2</td>
+                        <td>{{ product.warehouseTwo }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-12">
+                <table style="width: 96%; margin-left: 2%;">
+                    <tr>
+                        <td>Code Product</td>
+                        <td><b>{{ product.code }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Product</td>
+                        <td><b>{{ product.name }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td><b>{{ product.category }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Brand</td>
+                        <td><b>{{ product.brand }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Cost</td>
+                        <td><b>${{ product.cost }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><b>${{ product.price }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Unit</td>
+                        <td><b>{{ product.productUnit }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Tax</td>
+                        <td><b>{{ product.tax }}%</b></td>
+                    </tr>
+                    <tr>
+                        <td>Stock Alert</td>
+                        <td><span class="badge bg-danger">{{ product.stockAlert }}</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row content-row buffer-bottom">
+            <div class="col-md-12">
+                <button class="wj-btn wj-single" style="border-radius: 15px;" (click)="closeProduct()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

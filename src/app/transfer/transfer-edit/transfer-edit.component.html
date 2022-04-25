@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <!-- Creates card -->
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Edit Transfer</h3>
+                <hr>
+            </div>
+        </div>
+        <!-- Search bar and save data row -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="search-bar">
+                    <i class="bi bi-search search-icon"></i>
+                    <wj-flex-grid-search [placeholder]="'Search this table'" [grid]="transferGrid"></wj-flex-grid-search>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button class="wj-btn wj-single" (click)="save()">Save</button>
+            </div>
+        </div>
+        <!-- Grid and pager row -->
+        <div class="row buffer">
+            <div class="col-md-12">
+                <wj-flex-grid #transferGrid [itemsSource]="transferEditList" [headersVisibility]="'Column'">
+                    <wj-flex-grid-column header="Product" [binding]="'product'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Code" [binding]="'code'" [width]="'*'" [format]="'g'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Quantity" [binding]="'quantity'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Subtotal" [binding]="'subtotal'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="" [width]="'.7*'">
+                        <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+                            <i class="bi bi-x-circle icon-delete" (click)="deleteRow()"></i>
+                        </ng-template>
+                    </wj-flex-grid-column>
+                    <wj-flex-grid-filter #filter></wj-flex-grid-filter>
+                </wj-flex-grid>
+                <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true" [cv]="transferEditList"></wj-collection-view-navigator>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <!-- Creates the card -->
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Create Adjustment</h3>
+                <hr>
+            </div>
+        </div>
+        <!-- Control row -->
+        <div class="row content-row">
+            <div class="col-md-4">
+                Date<br>
+                <wj-input-date #adjustmentDate class="wj-input-item"></wj-input-date>
+            </div>
+            <div class="col-md-4">
+                Warehouse<br>
+                <wj-combo-box #warehouse [itemsSource]="warehouses" class="wj-input-item"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                Product<br>
+                <wj-auto-complete #product [displayMemberPath]="'name'" [itemsSource]="products" class="wj-input-item"></wj-auto-complete>
+            </div>
+        </div>
+        <!-- Add data to grid button -->
+        <div class="row content-row">
+            <div class="col-md-12">
+                <button class="wj-btn wj-single" (click)="addNewItem()">Add</button>
+            </div>
+        </div>
+        <!-- Grid row -->
+        <div class="row grid-row">
+            <div class="col-md-12">
+                <wj-flex-grid #adjustmentGrid [headersVisibility]="'Column'" [itemsSource]="adjustmentData" style="width: 100%;"></wj-flex-grid>
+            </div>
+        </div>
+        <!-- Save adjustment row -->
+        <div class="row content-row buffer-bottom">
+            <div class="col-md-12">
+                <button class="wj-btn wj-single" (click)="cancel()">Cancel</button>
+                <button class="wj-btn wj-single" (click)="saveAdjustment()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

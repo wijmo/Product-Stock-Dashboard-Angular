@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Quotation Details</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row buffer">
+            <div class="col-md-6">
+                <div class="quote-title">
+                    <h5>Company Info</h5>
+                    <div class="quote-company">{{ quote.company }}</div>
+                    <div>{{ quote.email }}</div>
+                    <div>{{ quote.phone }}</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <table style="margin-top: 10px; margin-left: 20px; width: 96%;">
+                    <tr>
+                        <th>Reference #</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>{{ quote.reference }}</td>
+                        <td>{{ quote.date }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row buffer">
+            <div class="col-md-12">
+                <wj-flex-grid #quoteGrid [itemsSource]="quotation" [headersVisibility]="'Column'" [isReadOnly]="true" (initialized)="initGrid(quoteGrid)" style="width: 100%;">
+                    <wj-flex-grid-column header="Itemized Costs" [binding]="'itemizedCost'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Quantity" [binding]="'quantity'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Unite Price" [binding]="'unitPrice'" [format]="'c2'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Amount" [binding]="'amount'" [format]="'c2'" [aggregate]="'Sum'" [width]="'*'"></wj-flex-grid-column>
+                </wj-flex-grid>
+            </div>
+        </div>
+        <div class="row buffer">
+            <div class="col-md-12">
+                <button class="wj-btn wj-single" style="border-radius: 15px;" (click)="closeQuote()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <!-- Creates the card -->
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Create Quote</h3>
+                <hr>
+            </div>
+        </div>
+        <!-- Control row -->
+        <div class="row content-row">
+            <div class="col-md-4">
+                Customer Name<br>
+                <wj-input-mask #customer id="customer" class="wj-input-item"></wj-input-mask>
+            </div>
+            <div class="col-md-4">
+                Phone<br>
+                <wj-input-mask #phone id="phone" mask="(999) 000-0000" class="wj-input-item"></wj-input-mask>
+            </div>
+            <div class="col-md-4">
+                Email<br>
+                <wj-input-mask #email id="email" class="wj-input-item"></wj-input-mask>
+            </div>
+        </div>
+        <!-- Control row -->
+        <div class="row content-row">
+            <div class="col-md-4">
+                Company<br>
+                <wj-input-mask #company id="company" class="wj-input-item"></wj-input-mask>
+            </div>
+            <div class="col-md-4">
+                Warehouse<br>
+                <wj-combo-box #warehouse [itemsSource]="warehouses" [selectedValue]="'Warehouse 1'" class="wj-input-item"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                Status<br>
+                <wj-combo-box #status [itemsSource]="statuses" [selectedValue]="'Sent'" class="wj-input-item"></wj-combo-box>
+            </div>
+        </div>
+        <!-- Control row -->
+        <div class="row content-row">
+            <div class="col-md-4">
+                Product<br>
+                <wj-combo-box #product [itemsSource]="products" [displayMemberPath]="'name'" [selectedValue]="'Pinapple'" class="wj-input-item"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                Quantity<br>
+                <wj-input-number #quantity id="quantity" class="wj-input-item"></wj-input-number>
+            </div>
+            <div class="col-md-4">
+                <button class="wj-btn wj-single" (click)="addNewItem()">Add</button>
+            </div>
+        </div>
+        <!-- Grid row -->
+        <div class="row grid-row">
+            <div class="col-md-12">
+                <wj-flex-grid #quoteGrid [headersVisibility]="'Column'" [itemsSource]="quoteData" style="width: 100%;">
+                    <wj-flex-grid-column header="Itemized Costs" [binding]="'itemizedCost'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Quantity" [binding]="'quantity'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Unite Price" [binding]="'unitPrice'" [format]="'c2'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Amount" [binding]="'amount'" [format]="'c2'" [aggregate]="'Sum'" [width]="'*'"></wj-flex-grid-column>
+                </wj-flex-grid>
+            </div>
+        </div>
+        <!-- Save data row -->
+        <div class="row content-row">
+            <div class="col-md-12">
+                <button class="wj-btn wj-single" (click)="cancel()">Cancel</button>
+                <button class="wj-btn wj-single" (click)="saveQuote()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Update Product</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-4">
+                Name<br>
+                <wj-input-mask #name id="name" [value]="product.name" class="wj-input-item"></wj-input-mask>
+            </div>
+            <div class="col-md-4">
+                Code<br>
+                <wj-input-number #code id="code" [value]="product.code" class="wj-input-item" [format]="'g'"></wj-input-number>
+            </div>
+            <div class="col-md-4">
+                Category<br>
+                <wj-combo-box #category id="category" [itemsSource]="categories" [selectedValue]="product.category" class="wj-input-item"></wj-combo-box>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-4">
+                Brand<br>
+                <wj-combo-box #brand id="brand" [itemsSource]="brands" [selectedValue]="product.brand" class="wj-input-item"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                Barcode Symbology<br>
+                <wj-combo-box #barcode id="barcode" [itemsSource]="barcodes" [selectedValue]="product.barcode" class="wj-input-item"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                Product Cost<br>
+                <wj-input-number #cost id="cost" [value]="product.cost" class="wj-input-item" [format]="'c2'"></wj-input-number>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-4">
+                Product Price<br>
+                <wj-input-number #price id="price" [value]="product.price" class="wj-input-item" [format]="'c2'"></wj-input-number>
+            </div>
+            <div class="col-md-4">
+                Product Unit<br>
+                <wj-combo-box #productUnit id="productUnit" [itemsSource]="units" [selectedValue]="product.productUnit" class="wj-input-item"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                Sale Unit<br>
+                <wj-combo-box #saleUnit id="saleUnit" [itemsSource]="units" [selectedValue]="product.saleUnit" class="wj-input-item"></wj-combo-box>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-4">
+                Purchase Unit<br>
+                <wj-combo-box #purchaseUnit id="purchaseUnit" [itemsSource]="units" [selectedValue]="product.purchaseUnit" class="wj-input-item"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                Stock Alert<br>
+                <wj-input-number #stockAlert id="stockAlert" [value]="product.stockAlert" class="wj-input-item" [format]="'g'"></wj-input-number>
+            </div>
+            <div class="col-md-4">
+                Order Tax<br>
+                <wj-input-number #tax id="tax" [value]="product.tax" class="wj-input-item" [format]="'p2'"></wj-input-number>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-4">
+                Warehouse One Quantity<br>
+                <wj-input-number #warehouseOne id="warehouseOne" [value]="product.warehouseOne" class="wj-input-item" [format]="'g'"></wj-input-number>
+            </div>
+            <div class="col-md-4">
+                Warehouse Two Quantity<br>
+                <wj-input-number #warehouseTwo id="warehouseTwo" [value]="product.warehouseTwo" class="wj-input-item" [format]="'g'"></wj-input-number>
+            </div>
+            <div class="col-md-4">
+                Tax Type<br>
+                <wj-combo-box #taxTypeSelection id="taxType" [itemsSource]="taxType" [selectedValue]="product.taxType" class="wj-input-item"></wj-combo-box>
+            </div>
+        </div>
+        <div class="row content-row buffer-bottom">
+            <div class="col-md-6">
+                <button class="wj-btn wj-single" (click)="updateProduct()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

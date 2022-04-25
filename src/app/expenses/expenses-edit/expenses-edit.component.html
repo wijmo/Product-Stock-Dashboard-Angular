@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <!-- Creates our card -->
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Edit Expense</h3>
+                <hr>
+            </div>
+        </div>
+        <!-- Control row -->
+        <div class="row content-row">
+            <div class="col-md-4">
+                Date<br>
+                <wj-input-date #expenseCalendar [value]="expense.date" style="width: 90%;"></wj-input-date>
+            </div>
+            <div class="col-md-4">
+                Warehouse<br>
+                <wj-combo-box #warehouse id="warehouse" [itemsSource]="warehouses" [selectedValue]="expense.warehouse" style="width: 90%;"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                Expense Category<br>
+                <wj-combo-box #expenseCategory id="expenseCategory" [itemsSource]="expenseCategories" [selectedValue]="expense.category" style="width: 90%;"></wj-combo-box>
+            </div>
+        </div>
+        <!-- Control row -->
+        <div class="row content-row">
+            <div class="col-md-4">
+                Amount<br>
+                <wj-input-number #amount id="amount" style="width: 90%;" [value]="expense.amount" [format]="'c2'"></wj-input-number>
+            </div>
+            <div class="col-md-4">
+                Details<br>
+                <wj-input-mask #details [value]="expense.details" style="width: 90%;"></wj-input-mask>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <!-- Submit row -->
+        <div class="row content-row buffer-bottom">
+            <div class="col-md-4">
+                <button class="wj-btn wj-single" (click)="submitExpenseEdit()">Submit</button>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+    </div>
+</div>

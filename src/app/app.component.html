@@ -1,0 +1,33 @@
+<nav class="top-nav">
+  <div class="app-title"><span class="nav-header">Product Stock Dashboard</span></div>
+  <div class="top-nav-links">
+    <ul>
+      <li><a routerLink="/profile" class="profile-link"><i class="bi bi-person-circle" style="color: #00c0d8;"></i></a></li>
+      <li><i #notificationBell class="bi bi-bell notification-bell" style="color: #00c0d8;"></i></li>
+      <li><i class="bi bi-list hamburger" (click)="toggleSideNav()" style="color: #00c0d8;"></i></li>
+      <wj-popup [owner]="notificationBell" [showTrigger]="'Click'" [hideTrigger]="'Blur'" class="popover">
+        <div class="popup-card">
+          <div class="popup-card-left">
+            <i class="bi bi-bell nav-link" style="margin-top: 5px;"></i>
+          </div>
+          <div class="popup-card-right">
+            <a routerLink="/notifications">3 Notifications</a>
+          </div>
+        </div>
+      </wj-popup>
+    </ul>
+  </div>
+</nav>
+<nav id="side-nav" class="side-nav">
+  <ul class="side-navbar-items">
+    <li routerLink="/dashboard" routerLinkActive="active"><i class="bi bi-bar-chart-line"></i><span>Dashboard</span></li>
+    <li routerLink="/products" routerLinkActive="active"><i class="bi bi-journal-bookmark"></i><span>Products</span></li>
+    <li routerLink="/adjustment" routerLinkActive="active"><i class="bi bi-pencil-square"></i><span>Adjustment</span></li>
+    <li routerLink="/transfer" routerLinkActive="active"><i class="bi bi-box-arrow-right"></i><span>Transfer</span></li>
+    <li routerLink="/expenses" routerLinkActive="active"><i class="bi bi-briefcase"></i><span>Expenses</span></li>
+    <li routerLink="/quotations" routerLinkActive="active"><i class="bi bi-basket"></i><span>Quotations</span></li>
+  </ul>
+</nav>
+<div id="maincontent" class="main-content">
+  <router-outlet></router-outlet>
+</div>

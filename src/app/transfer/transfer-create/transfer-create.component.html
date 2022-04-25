@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <!-- Creates the card -->
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Create Transfer</h3>
+                <hr>
+            </div>
+        </div>
+        <!-- Control row -->
+        <div class="row content-row">
+            <div class="col-md-4">
+                Date<br>
+                <wj-input-date #transferDate class="wj-input-item"></wj-input-date>
+            </div>
+            <div class="col-md-4">
+                From<br>
+                <wj-combo-box #warehouseFrom [itemsSource]="warehouses" [selectedValue]="'Warehouse 1'" class="wj-input-item"></wj-combo-box>
+            </div>
+            <div class="col-md-4">
+                To<br>
+                <wj-combo-box #warehouseTo [itemsSource]="warehouses" [selectedValue]="'Warehouse 2'" class="wj-input-item"></wj-combo-box>
+            </div>
+        </div>
+        <!-- Control row -->
+        <div class="row content-row">
+            <div class="col-md-4">
+                Product<br>
+                <wj-auto-complete #product [displayMemberPath]="'name'" [itemsSource]="products" class="wj-input-item"></wj-auto-complete>
+            </div>
+            <div class="col-md-4">
+                Quantity<br>
+                <wj-input-number #quantity id="quantity" class="wj-input-item" [format]="'g'"></wj-input-number>
+            </div>
+            <div class="col-md-4">
+                <button class="wj-btn wj-single" (click)="addNewItem()">Add</button>
+            </div>
+        </div>
+        <!-- Grid row -->
+        <div class="row grid-row">
+            <div class="col-md-12">
+                <wj-flex-grid #transferGrid [headersVisibility]="'Column'" [itemsSource]="transferData" style="width: 100%;"></wj-flex-grid>
+            </div>
+        </div>
+        <!-- Save data row -->
+        <div class="row content-row">
+            <div class="col-md-12">
+                <button class="wj-btn wj-single" (click)="cancel()">Cancel</button>
+                <button class="wj-btn wj-single" (click)="saveTransfer()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

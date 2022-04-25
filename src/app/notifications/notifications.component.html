@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Product Quantity Alerts</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <wj-flex-grid #alertsGrid [itemsSource]="notificationList" [headersVisibility]="'Column'">
+                    <wj-flex-grid-column header="Code" [binding]="'code'" [format]="'g'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Product" [binding]="'product'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Warehouse" [binding]="'warehouse'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Quantity" [binding]="'quantity'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Alert Quantity" [binding]="'alertQuantity'" [width]="'*'">
+                        <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+                            <span class="badge rounded-pill bg-danger">{{ cell.item.alertQuantity }}</span>
+                        </ng-template>
+                    </wj-flex-grid-column>
+                </wj-flex-grid>
+                <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true" [cv]="notificationList"></wj-collection-view-navigator>
+            </div>
+        </div>
+    </div>
+</div>

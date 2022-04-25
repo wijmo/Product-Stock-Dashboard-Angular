@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <!-- Creates the card -->
+    <div class="large-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Adjustment List</h3>
+                <hr>
+            </div>
+        </div>
+        <!-- Search bar and buttons row -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="search-bar">
+                    <i class="bi bi-search search-icon"></i>
+                    <wj-flex-grid-search [placeholder]="'Search this table'" [grid]="adjustmentGrid"></wj-flex-grid-search>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="wj-btn-group">
+                    <button type="button" class="wj-btn" (click)="savePDF()"><i class="bi bi-file-earmark-pdf icon-buffer"></i>PDF</button>
+                    <button type="button" class="wj-btn" (click)="saveExcel()"><i class="bi bi-file-earmark-excel icon-buffer"></i>Excel</button>
+                    <button type="button" class="wj-btn" (click)="saveSelection()"><i class="bi bi-x-square icon-buffer"></i>Export Selection</button>
+                    <button type="button" class="wj-btn" routerLink="/adjustment/create"><i class="bi bi-clipboard-plus icon-buffer"></i>Create</button>
+                </div>
+            </div>
+        </div>
+        <!-- Grid and pager row -->
+        <div class="row buffer">
+            <div class="col-md-12">
+                <wj-flex-grid #adjustmentGrid [itemsSource]="adjustmentList" [isReadOnly]="true" (initialized)="initAdjustmentGrid(adjustmentGrid)">
+                    <wj-flex-grid-column header="Date" [binding]="'date'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Reference" [binding]="'reference'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Warehouse" [binding]="'warehouse'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Total Products" [binding]="'totalProducts'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Action" [width]="'.7*'">
+                        <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+                            <i class="bi bi-eye icon-view" (click)="displayAdjustment()"></i><a routerLink="/adjustment/edit/{{cell.item.id}}"><i class="bi bi-pencil icon-edit"></i></a><i class="bi bi-x-circle icon-delete" (click)="deleteAdjustment()"></i>
+                        </ng-template>
+                    </wj-flex-grid-column>
+                    <wj-flex-grid-filter #filter></wj-flex-grid-filter>
+                </wj-flex-grid>
+                <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true" [cv]="adjustmentList"></wj-collection-view-navigator>
+                <div id="hiddenGrid" style="display: none;"></div>
+                <!-- Adjustment details popup -->
+                <wj-popup #adjustmentPopup class="modal-content">
+                    <div class="popup-header">
+                        <h3>Adjustment Detail</h3>
+                    </div>
+                    <hr>
+                    <div class="popup-body">
+                        <wj-flex-grid #adjustmentDetails class="adjustment-details" [itemsSource]="adjustmentDetail" [headersVisibility]="'Column'" [isReadOnly]="true" [selectionMode]="'Row'">
+                            <wj-flex-grid-column header="Product" [binding]="'product'" [width]="'*'" [align]="'justify'"></wj-flex-grid-column>
+                            <wj-flex-grid-column header="Code" [binding]="'code'" [width]="'*'" [align]="'justify'"></wj-flex-grid-column>
+                            <wj-flex-grid-column header="Quantity" [binding]="'quantity'" [width]="'*'" [align]="'justify'"></wj-flex-grid-column>
+                            <wj-flex-grid-column header="Type" [binding]="'type'" [width]="'*'" [align]="'justify'"></wj-flex-grid-column>
+                        </wj-flex-grid>
+                    </div>
+                    <hr>
+                    <div class="popup-footer">
+                        <button class="wj-btn wj-single wj-hide-ok" style="border-radius: 15px;">Close</button>
+                    </div>
+                </wj-popup>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+.wj-input-item {
+    width: 90%;
+}
+
+.wj-btn.wj-single {
+    border: 1px solid gray;
+    margin-right: 10px;
+    border-radius: 15px;
+    float: none;
+}
+
+.content-row {
+    margin-left: 10px;
+    margin-top: 25px;
+}
+
+.buffer {
+    margin-top: 10px;
+}
+
+.buffer-bottom {
+    margin-bottom: 20px;
+}

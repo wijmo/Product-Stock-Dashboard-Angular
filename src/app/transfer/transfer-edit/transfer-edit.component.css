@@ -1,0 +1,14 @@
+.wj-btn.wj-single {
+    border: 1px solid gray;
+    float: right;
+    margin-right: 10px;
+    border-radius: 15px;
+}
+
+.wj-collectionview-navigator {
+    margin-bottom: 10px;
+}
+
+.buffer {
+    margin-top: 10px;
+}

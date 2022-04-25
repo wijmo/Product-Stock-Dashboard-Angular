@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <!-- Creates the card -->
+    <div class="large-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">Product List</h3>
+                <hr>
+            </div>
+        </div>
+        <!-- Button row -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="search-bar">
+                    <i class="bi bi-search search-icon"></i>
+                    <wj-flex-grid-search [placeholder]="'Search this table'" [grid]="productGrid"></wj-flex-grid-search>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="wj-btn-group">
+                    <button type="button" class="wj-btn" (click)="savePDF()"><i class="bi bi-file-earmark-pdf icon-buffer"></i>PDF</button>
+                    <button type="button" class="wj-btn" (click)="saveExcel()"><i class="bi bi-file-earmark-excel icon-buffer"></i>Excel</button>
+                    <button type="button" class="wj-btn" (click)="saveSelection()"><i class="bi bi-x-square icon-buffer"></i>Export Selection</button>
+                    <button type="button" class="wj-btn" routerLink="/products/create"><i class="bi bi-clipboard-plus icon-buffer"></i>Create</button>
+                </div>
+            </div>
+        </div>
+        <!-- Grid and pager row -->
+        <div class="row buffer">
+            <div class="col-md-12">
+                <wj-flex-grid #productGrid [itemsSource]="productList" [isReadOnly]="true" (initialized)="initProductGrid(productGrid)">
+                    <wj-flex-grid-column header="Name" [binding]="'name'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Code" [binding]="'code'" [format]="'g0'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Category" [binding]="'category'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Brand" [binding]="'brand'" [width]="'.7*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Price" [binding]="'price'" [format]="'c2'" [width]="'.7*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Quantity" [binding]="'quantity'" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column header="Action" [width]="'*'">
+                        <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+                            <a routerLink="/products/details/{{cell.item.id}}"><i class="bi bi-eye icon-view"></i></a><a routerLink="/products/edit/{{cell.item.id}}"><i class="bi bi-pencil icon-edit"></i></a><i class="bi bi-x-circle icon-delete" (click)="delete()"></i>
+                        </ng-template>
+                    </wj-flex-grid-column>
+                    <wj-flex-grid-filter #filter></wj-flex-grid-filter>
+                </wj-flex-grid>
+                <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true" [cv]="productList"></wj-collection-view-navigator>
+                <div id="hiddenGrid" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>

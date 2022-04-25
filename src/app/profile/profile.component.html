@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="small-card">
+        <div class="row buffer">
+            <div class="col-md-12">
+                <h3 class="card-title">{{ userData.userName }}</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-4">
+                First name<br>
+                <wj-input-mask #firstName id="firstName" [value]="userData.firstName" class="wj-input-item"></wj-input-mask>
+            </div>
+            <div class="col-md-4">
+                Last name<br>
+                <wj-input-mask #lastName id="lastName" [value]="userData.lastName" class="wj-input-item"></wj-input-mask>
+            </div>
+            <div class="col-md-4">
+                Username<br>
+                <wj-input-mask #userName id="userName" [value]="userData.userName" class="wj-input-item"></wj-input-mask>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-4">
+                Phone<br>
+                <wj-input-mask #phone id="phone" [value]="userData.phone" class="wj-input-item"></wj-input-mask>
+            </div>
+            <div class="col-md-4">
+                Email<br>
+                <wj-input-mask #email id="email" [value]="userData.email" class="wj-input-item"></wj-input-mask>
+            </div>
+            <div class="col-md-4">
+                New password<br>
+                <wj-input-mask #password id="password" [value]="userData.password" [placeholder]="'Leave blank if unchanged'" class="wj-input-item"></wj-input-mask>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-md-12">
+                <button class="wj-btn wj-single" (click)="saveUserData()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

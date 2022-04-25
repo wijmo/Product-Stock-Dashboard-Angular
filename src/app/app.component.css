@@ -1,0 +1,143 @@
+.top-nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    background-color: hsl(0, 0%, 27%);
+    box-shadow: 1px 0 5px -2px rgb(180, 180, 180);
+    z-index: 100;
+}
+
+.app-title {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+}
+
+.top-nav-image {
+    height: 50px;
+    width: 80px;
+    margin-right: 5px;
+}
+
+.nav-header {
+    color: hsl(187, 100%, 42%);
+}
+
+.top-nav-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.top-nav-links li {
+    list-style: none;
+    text-decoration: none;
+    padding: 1rem;
+    display: block;
+}
+
+.profile-link {
+    color: black;
+}
+
+.notification-bell {
+    cursor: pointer;
+}
+
+.hamburger {
+    cursor: pointer;
+}
+
+.side-nav {
+    width: 125px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    margin-top: 60px;
+    transition: transform 0.5s;
+    box-shadow: 1px 0 5px -2px rgb(180, 180, 180);
+}
+
+.side-navbar-items {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.side-navbar-items li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid hsl(0, 0%, 75%);
+    color: hsl(187, 100%, 42%);
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.side-navbar-items li:first-child {
+    border: none;
+}
+
+.active {
+    background-color: hsl(195, 60%, 69%);
+    color: white;
+}
+
+.active i{
+    color: white;
+}
+
+.active span {
+    color: white;
+}
+
+.nav-link:hover{
+    cursor: pointer;
+}
+
+.main-content {
+    margin-left: 125px;
+    padding: 50px 1rem 0 1rem;
+    transition: 0.5s;
+    background-color: white;
+}
+
+.popup-card {
+    height: 50px;
+    display: flex;
+    width: 150px;
+}
+
+.popup-card-left {
+    flex: 0 0 35%;
+    height: 100%;
+}
+
+.popup-card-right {
+    flex: 1;
+    height: 100%;
+    margin-top: 12px;
+}
+
+.hidden {
+    transform: translateX(-126px);
+}
+
+.expand {
+    margin-left: 0px;
+}

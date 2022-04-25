@@ -1,0 +1,160 @@
+<main class="dashboard-grid">
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="value-card">
+                <div class="value-card-left">
+                    <i class="bi bi-cash-stack value-card-icon"></i>
+                </div>
+                <div class="value-card-right">
+                    <div class="value-card-title">
+                        Revenue
+                    </div>
+                    <div class="value-card-value">
+                        {{ revenue }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="value-card">
+                <div class="value-card-left">
+                    <i class="bi bi-cart-plus value-card-icon"></i>
+                </div>
+                <div class="value-card-right">
+                    <div class="value-card-title">
+                        Purchases
+                    </div>
+                    <div class="value-card-value">
+                        {{ purchases }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="value-card">
+                <div class="value-card-left">
+                    <i class="bi bi-arrow-90deg-right value-card-icon"></i>
+                </div>
+                <div class="value-card-right">
+                    <div class="value-card-title">
+                        Sales Return
+                    </div>
+                    <div class="value-card-value">
+                        {{ salesReturn }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="value-card">
+                <div class="value-card-left">
+                    <i class="bi bi-cash-coin value-card-icon"></i>
+                </div>
+                <div class="value-card-right">
+                    <div class="value-card-title">
+                        Profit
+                    </div>
+                    <div class="value-card-value">
+                        {{ profit }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="wijmo-card">
+                <wj-flex-chart #weeklyChart [header]="'This Week Sales & Purchases'" [bindingX]="'date'" [itemsSource]="salesChartData" (initialized)="weeklyChartInit(weeklyChart)">
+                    <wj-flex-chart-series [name]="'Sales'" [binding]="'sale'"></wj-flex-chart-series>
+                    <wj-flex-chart-series [name]="'Purchases'" [binding]="'purchase'"></wj-flex-chart-series>
+                </wj-flex-chart>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="wijmo-card">
+                <wj-flex-pie #topProductChart [header]="'Top Selling Products (2021)'" [bindingName]="'product'" [binding]="'amount'" [itemsSource]="topProductsData" (initialized)="topProductsInit(topProductChart)"></wj-flex-pie>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="wijmo-card">
+                <h5 class="wijmo-card-title">Stock Alert</h5>
+                <wj-flex-grid [itemsSource]="stockAlertData" [headersVisibility]="'Column'" [isReadOnly]="true" [alternatingRowStep]="0" [selectionMode]="3">
+                    <wj-flex-grid-column binding="code" header="Code" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="product" header="Product" [width]="'.7*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="warehouse" header="Warehouse" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="quantity" header="Quantity" [width]="'.7*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="alertQuantity" header="Alert Quantity" [width]="'*'"></wj-flex-grid-column>
+                </wj-flex-grid>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="wijmo-card">
+                <h5 class="wijmo-card-title">Top Selling Products ({{ monthNames[date.getMonth()] }})</h5>
+                <wj-flex-grid [itemsSource]="topProductsData" [headersVisibility]="'Column'" [isReadOnly]="true" [alternatingRowStep]="0" [selectionMode]="3" style="max-height: 255px">
+                    <wj-flex-grid-column binding="product" header="Product" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="quantity" header="Quantity" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="total" header="Grand Total" [width]="'*'"></wj-flex-grid-column>
+                </wj-flex-grid>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="wijmo-card">
+                <wj-flex-chart #paymentsChart [itemsSource]="paymentData" [bindingX]="'date'" [chartType]="'LineSymbols'" [header]="'Payment Sent and Received'" (initialized)="paymentsInit(paymentsChart)">
+                    <wj-flex-chart-legend [position]="'Bottom'"></wj-flex-chart-legend>
+                    <wj-flex-chart-series [binding]="'sent'" [name]="'Sent'"></wj-flex-chart-series>
+                    <wj-flex-chart-series [binding]="'received'" [name]="'Received'"></wj-flex-chart-series>
+                    <wj-flex-chart-animation [animationMode]="'Point'"></wj-flex-chart-animation>
+                </wj-flex-chart>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="wijmo-card">
+                <wj-flex-pie #customerChart [header]="topCustomers" [bindingName]="'customer'" [binding]="'sales'" [itemsSource]="topCustomerData" (initialized)="topCustomersInit(customerChart)"></wj-flex-pie>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="value-card-info">
+            <div class="wijmo-card">
+                <h5 class="wijmo-card-title">Recent Sales</h5>
+                <wj-flex-grid [itemsSource]="recentSalesData" [headersVisibility]="'Column'" [isReadOnly]="true" [alternatingRowStep]="0" [selectionMode]="3" style="max-height: 255px">
+                    <wj-flex-grid-column binding="references" header="Reference" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="customer" header="Customer" [width]="'*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="status" header="Status" [width]="'.8*'">
+                        <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+                            <span *ngIf="cell.item.status == 'Completed'" class="badge rounded-pill bg-success">{{ cell.item.status }}</span>
+                            <span *ngIf="cell.item.status == 'Pending'" class="badge rounded-pill bg-info">{{ cell.item.status }}</span>
+                            <span *ngIf="cell.item.status == 'Ordered'" class="badge rounded-pill bg-warning">{{ cell.item.status }}</span>
+                        </ng-template>
+                    </wj-flex-grid-column>
+                    <wj-flex-grid-column binding="grandTotal" header="Total" [width]="'.8*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="paid" header="Paid" [width]="'.6*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="due" header="Due" [width]="'.6*'"></wj-flex-grid-column>
+                    <wj-flex-grid-column binding="paymentStatus" header="Payment" [width]="'*'">
+                        <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+                            <span *ngIf="cell.item.paymentStatus == 'Paid'" class="badge rounded-pill bg-success">{{ cell.item.paymentStatus }}</span>
+                            <span *ngIf="cell.item.paymentStatus == 'Partial'" class="badge rounded-pill bg-info">{{ cell.item.paymentStatus }}</span>
+                            <span *ngIf="cell.item.paymentStatus == 'Unpaid'" class="badge rounded-pill bg-warning">{{ cell.item.paymentStatus }}</span>
+                        </ng-template>
+                    </wj-flex-grid-column>
+                </wj-flex-grid>
+            </div>
+        </div>
+    </div>
+</main>

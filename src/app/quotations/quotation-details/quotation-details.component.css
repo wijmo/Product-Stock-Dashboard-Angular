@@ -1,0 +1,39 @@
+.content-row {
+    margin-left: 10px;
+    margin-top: 25px;
+}
+
+.buffer {
+    margin-top: 10px;
+}
+
+.buffer-bottom {
+    margin-bottom: 20px;
+}
+
+.quote-company {
+    font-weight: bold;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    margin-bottom: 20px;
+}
+
+td, th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    width: 50%;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
